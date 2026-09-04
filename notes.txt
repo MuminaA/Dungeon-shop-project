@@ -1,0 +1,21 @@
+# shop = {
+#   "name": "",
+#   "gold_amount": 100,
+#   "items": ["sword"]
+# }
+
+# # users should be able to name the shop
+# shop["name"] = input("Enter shops name: ")
+
+# item = shop["items"][0]
+
+# # csimulate sale
+# # gold amount increases by 25
+# shop["gold_amount"] += 25
+# # item is gone (removed)
+# shop["items"].remove(item)
+
+# # summary of what happened
+# print(f"{shop['name']} sold a {item} for 25 gold coins.")
+# print(f"Gold is now: {shop['gold_amount']}")
+# print(f"items left: {shop['items']}")

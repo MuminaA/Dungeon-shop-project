@@ -1,0 +1,78 @@
+WEEK 1
+
+### What I'm Representing and How ###
+The core "thing" in this problem is a shop. A shop has a name, a pool of gold, 
+and an inventory of items. I'll represent it as a dictionary with three keys:
+
+    name — a string for the shop's display name
+    gold_amount — an integer tracking how much gold the shop has
+    items — a list of strings, where each string is an item in the shop's inventory
+
+I chose a dictionary over separate variables because the shop's properties are logically grouped — they all describe the same entity. 
+
+### What Operations I Need ###
+1. Name the shop
+
+    Input: a string typed by the user
+    Output: the shop's name field is set
+    In between: prompt the user, read their input, store it in the dictionary
+
+2. Simulate a sale
+
+    Input: the first item in the shop's inventory
+    Output: gold increases by 25, the item is removed from inventory
+    In between: grab the item at index 0, add 25 to gold_amount, remove that item from the items list
+
+3. Print a summary
+
+    Input: the shop's current state (name, gold, items) and the item that was sold
+    Output: three printed lines describing what happened
+    In between: format and print the shop name, the sold item, the new gold total, and the remaining inventory
+
+### Where the Logic Lives ###
+Everything lives in a single script for now. There are no functions or separate components — the code runs top to bottom:
+
+    1.Define the shop
+    2.Get user input for the name
+    3.Run the sale logic
+    4.Print the results
+
+### What I'm Not Sure About ###
+    - What if the inventory is empty? currently the code assumes there's always at least one item. If items is empty, 
+    grabbing index 0 will crash. I haven't handled that yet.
+    - Should the sale price be fixed or variable? I hardcoded 25 gold. It's not clear yet whether items should have their own prices.
+    - Should the shop be a class instead? A dictionary works for now, but if the shop needs methods (like a sell() function), 
+    a class would be a cleaner fit down the road.
+
+WEEK 2
+### What I'm Representing and How ###
+The core "thing" in this problem is the haggling logic. the customer should be able to make an offer
+depending on how close it is to the minimum acceptable price, i should be able to counter offer, and
+the customer can accept or decline that counter offer. And if the offer is really low then the shop refuses outright.
+
+### What Operations I Need ###
+1. Allow user to offer
+    Input: an integer typed by the user representing their offer price
+    Output: one of three outcomes:
+        1. if the offer meets or exceeds the minimum price → sale happens
+        2. If the offer is close but below the minimum → a counter-offer is presented
+        3. If the offer is insultingly low → the shop refuses outright
+
+2. Handle the counter offer
+    input: user input for whether the counter-offer is accepted or declined (yes or no)
+    output:
+        1. If accepted → sale happens at the counter-offer price
+        2. If declined → no sale and interaction ends
+
+### Where the Logic Lives ###
+    The haggling logic can live in its own class (ShopKeeper) and intake what the customer is trying to offer.
+    it can hold the minimum acceptable price and a threshold for what counts as "close enough" to trigger a 
+    counter-offer vs. an outright refusal. The counter-offer price will be calculated within this class
+
+### What I'm Not Sure About ###
+    - What should the counter-offer price actually be? Should it always be the minimum price, or maybe some percentage 
+    above the customers offer.
+    - What defines "insultingly low" vs. "close but below"? maybe there could be a percentage threshold (if it is below 50% of 
+    the minimum then = insulting).
+    - should there be an input validation or should i assume that the user will always type in a number. (if so add try/cach loop 
+    that reprompts until valid input is given)
